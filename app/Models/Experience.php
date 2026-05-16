@@ -6,5 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
-    //
+    protected $fillable = [
+        "role",
+        "company",
+        "location",
+        "start_date",
+        "end_date",
+        "current",
+        "description",
+    ];
+
+    protected $casts = [
+        "start_date" => "date",
+        "end_date" => "date",
+        "current" => "boolean",
+    ];
 }
