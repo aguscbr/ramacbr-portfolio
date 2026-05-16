@@ -3,38 +3,54 @@
 namespace App\Filament\Resources\Projects\Schemas;
 
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class ProjectForm
 {
     public static function configure(Schema $schema): Schema
     {
-        return $schema
-            ->components([
+        return $schema->components([
+            Section::make('Información principal')->schema([
                 TextInput::make('title')
-                    ->required(),
+                    ->label('Título')
+                    ->required()
+                    ->maxLength(255),
                 Textarea::make('description')
+                    ->label('Descripción')
                     ->required()
-                    ->columnSpanFull(),
+                    ->rows(4),
                 FileUpload::make('image')
-                    ->image(),
+                    ->label('Imagen')
+                    ->image()
+                    ->directory('projects'),
+            ]),
+            Section::make('Links')->schema([
                 TextInput::make('demo_url')
+                    ->label('URL demo')
                     ->url(),
-                TextInput::make('github_url')
+                TextInput::make('demo_url')
+                    ->label('GitHub')
                     ->url(),
-                Textarea::make('tech_stack')
-                    ->columnSpanFull(),
+            ])->columns(2),
+            Section::make('Configuración')->schema([
+                TagsInput::make('tech_stack')
+                    ->label('Tecnologías'),
                 TextInput::make('order')
-                    ->required()
+                    ->label('Orden')
                     ->numeric()
                     ->default(0),
                 Toggle::make('visible')
-                    ->required(),
+                    ->label('Visible')
+                    ->default(true),
                 Toggle::make('featured')
-                    ->required(),
-            ]);
+                    ->label('Destacado')
+                    ->default(false),
+            ]),
+        ]);
     }
 }
