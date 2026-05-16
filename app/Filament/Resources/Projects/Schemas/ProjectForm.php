@@ -33,7 +33,7 @@ class ProjectForm
                 TextInput::make('demo_url')
                     ->label('URL demo')
                     ->url(),
-                TextInput::make('demo_url')
+                TextInput::make('github_url')
                     ->label('GitHub')
                     ->url(),
             ])->columns(2),
