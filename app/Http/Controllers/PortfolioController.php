@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Certificate;
 use App\Models\Education;
 use App\Models\Experience;
@@ -11,7 +12,8 @@ use App\Models\Skill;
 class PortfolioController extends Controller
 {
     public function index()
-    {
+    {   
+        $about = About::first();
         $projects = Project::where('visible', true)
             ->orderBy('order')
             ->get();
@@ -26,6 +28,6 @@ class PortfolioController extends Controller
         $certificates = Certificate::orderBy('issued_at', 'desc')
             ->get();
 
-        return view('portfolio', compact('projects', 'skills', 'experiences', 'education', 'certificates'));
+        return view('portfolio', compact('about', 'projects', 'skills', 'experiences', 'education', 'certificates'));
     }
 }
