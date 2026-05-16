@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ $description ?? 'Desarrollador fullstack especializado en Laravel y Vue.js' }}">
-    <title>{{ $title ?? 'Tu Nombre — Fullstack Developer' }}</title>
+    <title>{{ $title ?? 'Ramiro Cabrera — Fullstack Developer' }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
