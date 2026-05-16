@@ -27,6 +27,7 @@ class ProjectForm
                 FileUpload::make('image')
                     ->label('Imagen')
                     ->image()
+                    ->disk("public")
                     ->directory('projects'),
             ]),
             Section::make('Links')->schema([
