@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class About extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'tagline',
+        'bio',
+        'avatar',
+        'location',
+        'email',
+        'github_url',
+        'linkedin_url',
+        'cv_url',
+    ];
 }
