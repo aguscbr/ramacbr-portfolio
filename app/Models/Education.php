@@ -6,5 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Education extends Model
 {
-    //
+    protected $fillable = [
+        'institution',
+        'degree',
+        'field',
+        'start_date',
+        'end_date',
+        'current',
+        'description',
+        'order',
+    ];
+
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+        'current' => 'boolean',
+    ];
 }
