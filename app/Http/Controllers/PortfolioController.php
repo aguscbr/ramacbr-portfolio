@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Certificate;
+use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Skill;
@@ -19,7 +21,11 @@ class PortfolioController extends Controller
             ->groupBy('category');
         $experiences = Experience::orderBy('start_date', 'desc')
             ->get();
+        $education = Education::orderBy('start_date', 'desc')
+            ->get();
+        $certificates = Certificate::orderBy('issued_at', 'desc')
+            ->get();
 
-        return view('portfolio', compact('projects', 'skills', 'experiences'));
+        return view('portfolio', compact('projects', 'skills', 'experiences', 'education', 'certificates'));
     }
 }
