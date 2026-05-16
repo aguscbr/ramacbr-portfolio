@@ -10,10 +10,12 @@ RUN apk add --no-cache \
     unzip \
     git \
     sqlite \
-    sqlite-dev
+    sqlite-dev \
+    icu-dev \
+    libzip-dev
 
 # Instalar extensiones PHP
-RUN docker-php-ext-install pdo pdo_sqlite
+RUN docker-php-ext-install pdo pdo_sqlite intl zip
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
